@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConstraintOverride.dto.Constraints;
 
 namespace ConstraintOverride.dataseed
 {
@@ -12,25 +13,33 @@ namespace ConstraintOverride.dataseed
         public static Profile GetProfile()
         {
             Profile profile = new Profile();
-            profile.RouteConstraint = new RouteConstraint() { OutOfRoute = 100 };
-            profile.Vehicles = GetVehicles();
+            profile.RouteConstraints = new List<RouteConstraint>() { new RouteConstraint() {  OutOfRoute = 100, Mode =  "TL"},
+                                                                    new RouteConstraint() {  OutOfRoute = 1000, Mode =  "IMDL"}};
+
+            profile.EquipmentTypeConstraints = new List<EquipmentTypeConstraint>() { new EquipmentTypeConstraint() { EquipmentType="53", MaximumWeight=10000, MinimumPallets=5} };
+
+            profile.Overrides = GetOverrides();
 
             return profile;
         }
 
-        private static List<Vehicle> GetVehicles()
+        private static List<Override> GetOverrides()
         {
-            List<Vehicle> vehicles = new List<Vehicle>();
+            List<Override> overrides = new List<Override>();
 
-            vehicles.Add(GetSingleFilterSingleOverrideVehicle());
-            vehicles.Add(GetMultipleFiltersWithSingleOverrideVehicle());
-            vehicles.Add(GetCustomerAndWarehouseFilterSingleOverrideVehicle());
-            return vehicles;
+            overrides.Add(GetSingleFilterSingleOverride());
+            overrides.Add(GetMultipleFiltersWithSingleOverride());
+            overrides.Add(GetCustomerAndWarehouseFilterSingleOverride());
+            return overrides;
         }
 
-        private static Vehicle GetCustomerAndWarehouseFilterSingleOverrideVehicle()
+        /// <summary>
+        /// Create an override for C1 and Warehouse either W10 or W20. Out of Route will be 500
+        /// </summary>
+        /// <returns></returns>
+        private static Override GetCustomerAndWarehouseFilterSingleOverride()
         {
-            Vehicle custom1 = new Vehicle();
+            Override custom1 = new Override();
             Filter filter1 = new Filter();
 
             PropertyValue customerC1 = new PropertyValue();
@@ -63,9 +72,13 @@ namespace ConstraintOverride.dataseed
             return custom1;
         }
 
-        private static Vehicle GetSingleFilterSingleOverrideVehicle()
+        /// <summary>
+        /// Create an ovveride for T200. OutOfRoute will be 200
+        /// </summary>
+        /// <returns></returns>
+        private static Override GetSingleFilterSingleOverride()
         {
-            Vehicle custom1 = new Vehicle();
+            Override custom1 = new Override();
             Filter filter1 = new Filter();
 
             PropertyValue carrierT1 = new PropertyValue();
@@ -91,9 +104,13 @@ namespace ConstraintOverride.dataseed
             return custom1;
         }
 
-        private static Vehicle GetMultipleFiltersWithSingleOverrideVehicle()
+        /// <summary>
+        /// Create an override for T3 and Mode = TL and IsTeam = false. Override will be 300
+        /// </summary>
+        /// <returns></returns>
+        private static Override GetMultipleFiltersWithSingleOverride()
         {
-            Vehicle custom2 = new Vehicle();
+            Override custom2 = new Override();
             Filter filter1 = new Filter();
 
             PropertyValue carrierT3 = new PropertyValue();

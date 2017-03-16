@@ -15,6 +15,6 @@ namespace ConstraintOverride.dto
         public List<Order> Orders { get; set; }
         public List<Stop> Stops { get; set; }
 
-        public Vehicle Vehicle { get; set; }
+        public Override Override { get; set; }
     }
 }

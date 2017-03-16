@@ -11,7 +11,9 @@ namespace ConstraintOverride.matcher
     {
         public static int GetOutOfRoute(Profile profile, Route route)
         {
-            return GetValue<int>("OutOfRoute", profile.RouteConstraint.OutOfRoute, route);    
+            RouteConstraint rConst = profile.RouteConstraints.Where(r => r.Mode.Equals(r.Mode)).FirstOrDefault();
+
+            return (rConst!= null ? GetValue<int>("OutOfRoute", rConst.OutOfRoute, route) : 0);    
         }
 
         private static T GetValue<T>(string constrainName, T value, Route route)
@@ -23,9 +25,9 @@ namespace ConstraintOverride.matcher
 
         private static object GetOverride(string name, Route route)
         {
-            if (route.Vehicle != null)
+            if (route.Override != null)
             {
-                PropertyValue constOver = route.Vehicle.ConstraintOverrides.FirstOrDefault(f => f.PropertyName.Equals(name));
+                PropertyValue constOver = route.Override.ConstraintOverrides.FirstOrDefault(f => f.PropertyName.Equals(name));
                 if (constOver != null)
                 {
                     return constOver.Value;

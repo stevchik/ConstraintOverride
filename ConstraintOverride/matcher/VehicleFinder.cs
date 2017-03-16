@@ -9,18 +9,18 @@ namespace ConstraintOverride.matcher
 {
     public class VehicleFinder
     {
-        public static int FindVehicles(List<Route> routes, List<Vehicle> vehicles)
+        public static int FindVehicles(List<Route> routes, List<Override> overrides)
         {
             int numberOfMatches = 0;
 
-            foreach (Vehicle vehicle in vehicles)
+            foreach (Override vehicle in overrides)
             {
-                foreach (Route route in routes.Where(r => r.Vehicle == null))
+                foreach (Route route in routes.Where(r => r.Override == null))
                 {
                     if (doesVehicleMatchRoute(vehicle, route))
                     {
                         numberOfMatches++;
-                        route.Vehicle = vehicle;
+                        route.Override = vehicle;
                     }
                 }
             }
@@ -28,7 +28,7 @@ namespace ConstraintOverride.matcher
             return numberOfMatches;
         }
 
-        private static bool doesVehicleMatchRoute(Vehicle vehicle, Route route)
+        private static bool doesVehicleMatchRoute(Override vehicle, Route route)
         {
             foreach (Filter filter in vehicle.Filters)
             {

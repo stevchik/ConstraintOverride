@@ -50,27 +50,27 @@ namespace ConstraintOverride
 
             Console.WriteLine($"Done with Profile");
 
-            numberOfMatches = VehicleFinder.FindVehicles(routes, profile.Vehicles);
+            //numberOfMatches = VehicleFinder.FindVehicles(routes, profile.Overrides);
 
-            Console.WriteLine($"Found {numberOfMatches} matches");
+            //Console.WriteLine($"Found {numberOfMatches} matches");
 
-            Console.WriteLine($"Route index:");
+            //Console.WriteLine($"Route index:");
 
-            value = Console.ReadLine();
-            while (!value.Equals("x"))
-            {
-                if (int.TryParse(value, out routeIndex))
-                {
-                    route = routes[routeIndex];
-                    Console.WriteLine($"Out of route for {routeIndex} is {ConstraintFinder.GetOutOfRoute(profile, route)}");
-                    if (route.Vehicle!=null)
-                    {
-                        Console.WriteLine($"Vehicle {route.Vehicle.Name}");
-                    }
-                }
-                value = Console.ReadLine();
-            }
-           
+            //value = Console.ReadLine();
+            //while (!value.Equals("x"))
+            //{
+            //    if (int.TryParse(value, out routeIndex))
+            //    {
+            //        route = routes[routeIndex];
+            //        Console.WriteLine($"Out of route for {routeIndex} is {ConstraintFinder.GetOutOfRoute(profile, route)}");
+            //        if (route.Vehicle!=null)
+            //        {
+            //            Console.WriteLine($"Vehicle {route.Vehicle.Name}");
+            //        }
+            //    }
+            //    value = Console.ReadLine();
+            //}
+            Console.ReadLine();
             
         }
     }

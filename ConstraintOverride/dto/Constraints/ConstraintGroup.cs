@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConstraintOverride.dto
+namespace ConstraintOverride.dto.Constraints
 {
-    public class RouteConstraint
+    public class ConstraintGroup
     {
-        public int OutOfRoute { get; set; }
     }
 }

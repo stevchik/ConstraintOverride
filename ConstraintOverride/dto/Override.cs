@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConstraintOverride.dto
 {
-    public class Vehicle
+    public class Override
     {
         public string Name { get; set; }
         public List<Filter> Filters { get; set; }

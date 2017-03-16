@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="constraint\ConstraintEngine.cs" />
     <Compile Include="dataseed\ProfileGenerator.cs" />
     <Compile Include="dataseed\RouteGenerator.cs" />
     <Compile Include="dto\Carrier.cs" />
+    <Compile Include="dto\Constraints\ConstraintGroup.cs" />
+    <Compile Include="dto\Constraints\EquipmentTypeConstraint.cs" />
     <Compile Include="dto\DriverType.cs" />
     <Compile Include="dto\Filter.cs" />
     <Compile Include="dto\FilterOperator.cs" />
@@ -54,9 +57,9 @@
     <Compile Include="dto\Order.cs" />
     <Compile Include="dto\Profile.cs" />
     <Compile Include="dto\Route.cs" />
-    <Compile Include="dto\RouteConstraint.cs" />
+    <Compile Include="dto\Constraints\RouteConstraint.cs" />
     <Compile Include="dto\Stop.cs" />
-    <Compile Include="dto\Vehicle.cs" />
+    <Compile Include="dto\Override.cs" />
     <Compile Include="dto\Warehouse.cs" />
     <Compile Include="extension\ListExtension.cs" />
     <Compile Include="matcher\ConstraintFinder.cs" />
@@ -68,6 +71,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
